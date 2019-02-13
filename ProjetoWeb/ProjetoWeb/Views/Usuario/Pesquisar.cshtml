@@ -1,0 +1,78 @@
+﻿@model IEnumerable<ProjetoWeb.usuario>
+
+@using (Html.BeginForm(@*"Pesquisar", "UsuarioController", FormMethod.Post*@))
+{
+
+<h4>Pesquisar</h4>
+
+<div style="float:left;">
+    <input type="text" name="Nome" id="Nome" placeholder="Nome" />
+    <input id="Sobrenome" type="text" name="Sobrenome" placeholder="Sobrenome" />
+    <input id="Email" type="text" name="Email" placeholder="Email" />
+    <input id="Login" type="text" name="Login" placeholder="Login" />
+    <input id="Status" type="text" name="Status" placeholder="Status" />
+    <input type="submit" value="Pesquisar" @*onclick="Pesquisar()"*@ />
+</div>
+
+}
+
+<table class="table">
+    <tr>
+        <th>
+            NOME
+        </th>
+        <th>
+           SOBRENOME
+        </th>
+        <th>
+            CPF
+        </th>
+        <th>
+            E-MAIL
+        </th>
+        <th>
+            LOGIN
+        </th>
+        <th>
+            SENHA
+        </th>
+        <th>
+            ATIVO
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sobrenome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cpf_formatado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.loginUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.senha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.stAtivo)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Editar", new { id = item.cod }) |
+                @*@Html.ActionLink("Details", "Details", new { id=item.cod }) |*@
+                @Html.ActionLink("Excluir", "Excluir", new { id = item.cod })
+            </td>
+        </tr>
+    }
+
+</table>
+

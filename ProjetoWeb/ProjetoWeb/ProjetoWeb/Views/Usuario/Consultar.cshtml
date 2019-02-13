@@ -1,0 +1,72 @@
+﻿@model IEnumerable<ProjetoWeb.usuario>
+
+<p>
+   @* @Html.ActionLink("Create New", "Create")*@
+    <h4>Filtrar</h4>
+</p>
+<table class="table">
+    <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.cod)
+        </th>*@
+
+        <th>
+            NOME
+        </th>
+        <th>
+            SOBRENOME
+        </th>
+        <th>
+            CPF
+        </th>
+        <th>
+            E-MAIL
+        </th>
+        <th>
+            LOGIN
+        </th>
+        @*<th>
+            SENHA
+        </th>*@
+        <th>
+            STATUS
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.cod)
+        </td>*@
+
+        <td>
+            @Html.DisplayFor(modelItem => item.nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sobrenome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cpf)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.loginUsuario)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.senha)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.stAtivo)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Editar", new { id = item.cod }) |
+            @*@Html.ActionLink("Details", "Details", new { id=item.cod }) |*@
+            @Html.ActionLink("Excluir", "Excluir", new { id = item.cod })
+        </td>
+    </tr>
+}
+
+</table>

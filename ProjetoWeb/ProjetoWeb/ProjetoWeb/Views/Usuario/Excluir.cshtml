@@ -1,0 +1,84 @@
+﻿@model ProjetoWeb.usuario
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>usuario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            NOME
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome)
+        </dd>
+
+        <dt>
+            SOBRENOME
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sobrenome)
+        </dd>
+
+        <dt>
+            CPF
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cpf)
+        </dd>
+
+        <dt>
+            E-MAIL
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            LOGIN
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.loginUsuario)
+        </dd>
+
+        <dt>
+            SENHA
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.senha)
+        </dd>
+
+        <dt>
+            STATUS
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.stAtivo)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm("Excluir", "Usuario", FormMethod.Post, new { name = "form", id = "form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input value="Delete" onclick="pergunta()" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
+
+<script language="JavaScript">
+    function pergunta() {
+        if (confirm('Tem certeza que quer excluir este registro?')) {
+            document.form.submit()
+        }
+    }
+</script>
+

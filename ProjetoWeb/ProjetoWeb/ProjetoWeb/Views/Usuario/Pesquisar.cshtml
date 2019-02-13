@@ -1,0 +1,91 @@
+﻿@model IEnumerable<ProjetoWeb.usuario>
+
+@using (Html.BeginForm(@*"Pesquisar", "UsuarioController", FormMethod.Post*@))
+{
+<table>
+    <tr>
+        <th>
+            <input type="text" name="Nome" id="Nome" placeholder="Nome" />
+        </th>
+        <th>
+
+        </th>
+        <th>
+            <input id="Sobrenome" type="text" name="Sobrenome" placeholder="Sobrenome"/>
+        </th>
+        <th>
+            <input id="Email" type="text" name="Email" placeholder="Email" />
+        </th>
+        <th>
+            <input id="Login" type="text" name="Login" placeholder="Login" />
+        </th>
+        <th>
+            <input id="Status" type="text" name="Status" placeholder="Status"/>
+        </th>
+        <th>
+            <input type="submit" value="Pesquisar" @*onclick="Pesquisar()"*@ />
+        </th>
+    </tr>
+</table>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            Nome
+        </th>
+        <th>
+           Sobrenome
+        </th>
+        <th>
+            CPF
+        </th>
+        <th>
+            E-mail
+        </th>
+        <th>
+            Login
+        </th>
+        <th>
+            Senha
+        </th>
+        <th>
+            Ativo
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sobrenome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cpf_formatado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.loginUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.senha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.stAtivo)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Editar", new { id = item.cod }) |
+                @*@Html.ActionLink("Details", "Details", new { id=item.cod }) |*@
+                @Html.ActionLink("Excluir", "Excluir", new { id = item.cod })
+            </td>
+        </tr>
+    }
+
+</table>
+
